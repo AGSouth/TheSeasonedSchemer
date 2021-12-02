@@ -1,0 +1,13 @@
+#lang racket
+
+(require "GitRepositories/TheLittleSchemer/TheLittleSchemer.rkt")
+
+(define scramble-b
+  (lambda (tup rev-pre)
+    (cond
+      ((null? tup) (quote ()))
+      (else
+        (cons (pick (car tup)
+                    (cons (car tup) rev-pre))
+              (scramble-b (cdr tup)
+                     (cons (car tup) rev-pre)))))))
